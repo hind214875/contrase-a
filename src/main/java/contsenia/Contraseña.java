@@ -27,13 +27,14 @@ public class Contraseña {
 
     }
 
-    private static boolean sumaImpar(int digito1, int digito2) {//metodo que devuelve si la suma de dos enteros par o impar
-        int suma = digito1 + digito2;
-        boolean impar = true;
-        impar = suma % 2 != 0;
-        return impar;
+    private static boolean sumaImpar(int digito1, int digito2) {//metodo que devuelve si la suma de dos enteros par o impar   
+        return (digito1 + digito2) % 2 != 0;
     }
-
+    
+    private static boolean MultiplicacionPar(int digito1,int digito2){
+      return (digito1 * digito2)%2 == 0;
+    }
+    
     public static void main(String[] args) {
         //declaracion de variables
         int numero1, numero2, numero3, numero4;
@@ -63,12 +64,12 @@ public class Contraseña {
             } while (numero3 == numero4 || numero4 == numero1);
 
             //genera letra aleatoria utilisando el metodo GeneraEnteroAleatorio()
-            c = (char) GeneraEnteroAleatorio(MINCHAR, MAXCHAR);
+            c = (char) GeneraEnteroAleatorio(MINCHAR,MAXCHAR);
             
             if (!(sumaImpar(numero1, numero4)) || (sumaImpar(numero2, numero3))) {//si una de las condiciones no es valida contraseña no es valida
                 System.out.println("Contraseña no es valida: " + numero1 + numero2 + numero3 + numero4 + c);
             }
-        } while (!(sumaImpar(numero1, numero4)) || (sumaImpar(numero2, numero3)));//se repete la buclo y genera otra contraseña
+        } while (!(sumaImpar(numero1, numero4)) || !(MultiplicacionPar(numero2, numero3)));//se repete la buclo y genera otra contraseña
 
         System.out.println("la contraseña es valida: " + numero1 + numero2 + numero3 + numero4 + c);
     }
